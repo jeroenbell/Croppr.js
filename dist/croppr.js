@@ -609,6 +609,12 @@ var CropprCore = function () {
       this.imageClippedEl.className = 'croppr-imageClipped';
       this.regionEl = document.createElement('div');
       this.regionEl.className = 'croppr-region';
+      this.crossHair = document.createElement('span');
+      this.crossHair.className = 'croppr-crosshair';
+      this.rulerH = document.createElement('span');
+      this.rulerH.className = 'croppr-dashed croppr-ruler-h';
+      this.rulerV = document.createElement('span');
+      this.rulerV.className = 'croppr-dashed croppr-ruler-v';
       this.overlayEl = document.createElement('div');
       this.overlayEl.className = 'croppr-overlay';
       var handleContainerEl = document.createElement('div');
@@ -625,6 +631,9 @@ var CropprCore = function () {
       this.cropperEl.appendChild(this.overlayEl);
       this.cropperEl.appendChild(handleContainerEl);
       this.containerEl.appendChild(this.cropperEl);
+      this.regionEl.appendChild(this.crossHair);
+      this.regionEl.appendChild(this.rulerH);
+      this.regionEl.appendChild(this.rulerV);
       targetEl.parentElement.replaceChild(this.containerEl, targetEl);
     }
     /**
