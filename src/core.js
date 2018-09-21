@@ -9,7 +9,7 @@ import enableTouch from './touch';
 
 /**
  * Define a list of handles to create.
- * 
+ *
  * @property {Array} position - The x and y ratio position of the handle within
  *      the crop region. Accepts a value between 0 to 1 in the order of [X, Y].
  * @property {Array} constraints - Define the side of the crop region that is to
@@ -123,6 +123,14 @@ export default class CropprCore {
     this.regionEl = document.createElement('div');
     this.regionEl.className = 'croppr-region';
 
+    // Create rulers and crosshair
+    this.crossHair = document.createElement('span');
+    this.crossHair.className = 'croppr-crosshair';
+    this.rulerH = document.createElement('span');
+    this.rulerH.className = 'croppr-dashed croppr-ruler-h';
+    this.rulerV = document.createElement('span');
+    this.rulerV.className = 'croppr-dashed croppr-ruler-v';
+
     // Create overlay element
     this.overlayEl = document.createElement('div');
     this.overlayEl.className = 'croppr-overlay';
@@ -147,6 +155,9 @@ export default class CropprCore {
     this.cropperEl.appendChild(this.overlayEl);
     this.cropperEl.appendChild(handleContainerEl);
     this.containerEl.appendChild(this.cropperEl);
+    this.regionEl.appendChild(this.crossHair);
+    this.regionEl.appendChild(this.rulerH);
+    this.regionEl.appendChild(this.rulerV);
 
     // And then finally insert it into the document
     targetEl.parentElement.replaceChild(this.containerEl, targetEl);
